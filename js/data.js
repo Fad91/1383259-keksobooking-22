@@ -1,3 +1,5 @@
+import {getRandomInt, getAnotherInt} from './util.js';
+
 const TITLES = [
   'Отличные апартаменты!',
   'Комфортное жилье за малые деньги',
@@ -6,12 +8,12 @@ const TITLES = [
   'Жилье топ!',
 ];
 
-const TYPES = [
-  'palace',
-  'flat',
-  'house',
-  'bungalow',
-];
+const TYPES = {
+  palace: 'Дворец',
+  flat: 'Квартира',
+  house: 'Дом',
+  bungalow: 'Бунгало',
+};
 
 const CHECKS = [
   '12:00',
@@ -42,4 +44,46 @@ const PHOTOS = [
   'http://o0.github.io/assets/images/tokyo/hotel3.jpg',
 ];
 
-export {TITLES, TYPES, CHECKS, FEATURES, DESCRIPTIONS, PHOTOS};
+const createAdvert = function () {
+
+  let x = getRandomInt(1, 8);
+  let featuresValue = [];
+  for (let i = 0; i < getRandomInt(1, FEATURES.length - 1); i++) {
+    featuresValue.push(FEATURES[i]);
+  }
+  let photosValue = [];
+  for (let j = 0; j < getRandomInt(0, PHOTOS.length - 1); j++) {
+    photosValue.push(PHOTOS[j]);
+  }
+  const getRandomArrayElement = function(elements) {
+    return elements[getRandomInt(0, elements.length - 1)]
+  };
+
+  return {
+    author: {
+      avatar: 'img/avatars/user0' + x,
+    },
+    offer: {
+      title: getRandomArrayElement(TITLES) + '',
+      address: '35.65000, 139.70000',
+      price: getRandomInt(100, 1000),
+      type: getRandomArrayElement(Object.keys(TYPES)),
+      rooms: getRandomInt(1, 10),
+      guests: getRandomInt(1, 10),
+      checkin: getRandomArrayElement(CHECKS) + '',
+      checkout: getRandomArrayElement(CHECKS) + '',
+      features: featuresValue,
+      description: getRandomArrayElement(DESCRIPTIONS) + '',
+      photos: getRandomArrayElement(PHOTOS),
+    },
+    location: {
+      x: getAnotherInt(35.65000, 35.67000, 5),
+      y: getAnotherInt(139.70000, 35.80000, 5),
+    },
+  };
+};
+
+const similarAdverts = new Array(10).fill(null).map(() => createAdvert());
+
+export{similarAdverts};
+export{TITLES, TYPES, CHECKS, FEATURES, DESCRIPTIONS, PHOTOS};

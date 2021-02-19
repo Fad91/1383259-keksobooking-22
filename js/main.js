@@ -1,1 +1,2 @@
-import './create-advert.js';
+import './data.js';
+import './create-element.js';
