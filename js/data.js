@@ -46,7 +46,7 @@ const PHOTOS = [
 
 const createAdvert = function () {
 
-  let x = getRandomInt(1, 8);
+  let z = getRandomInt(1, 8);
   let featuresValue = [];
   for (let i = 0; i < getRandomInt(1, FEATURES.length - 1); i++) {
     featuresValue.push(FEATURES[i]);
@@ -61,7 +61,7 @@ const createAdvert = function () {
 
   return {
     author: {
-      avatar: 'img/avatars/user0' + x,
+      avatar: 'img/avatars/user0' + z,
     },
     offer: {
       title: getRandomArrayElement(TITLES) + '',
@@ -83,7 +83,7 @@ const createAdvert = function () {
   };
 };
 
-const similarAdverts = new Array(10).fill(null).map(() => createAdvert());
+const similarAdverts = new Array(getRandomInt(1,10)).fill(null).map(() => createAdvert());
 
 export{similarAdverts};
 export{TITLES, TYPES, CHECKS, FEATURES, DESCRIPTIONS, PHOTOS};
