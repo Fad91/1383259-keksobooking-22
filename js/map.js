@@ -16,7 +16,7 @@ map.setView({
 }, 10);
 
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-  attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+  attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
 }).addTo(map);
 
 const mainPinMarker = L.icon({
@@ -35,9 +35,9 @@ const mainMapMarker = L.marker({
 
 mainMapMarker.addTo(map);
 
-mainMapMarker.on('moveend', function (evt) {
-  console.log(evt.target.getLatLng());
-});
+// mainMapMarker.on('moveend', function (evt) {
+//   // console.log(evt.target.getLatLng());
+// });
 
 const createCustomPopup = function(advert) {
   const balloonTemplate = document.querySelector('#card').content.querySelector('.popup');
