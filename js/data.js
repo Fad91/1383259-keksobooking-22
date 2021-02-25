@@ -1,4 +1,7 @@
-import {getRandomInt, getAnotherInt} from './util.js';
+import {
+  getRandomInt,
+  getAnotherInt
+} from './util.js';
 
 const TITLES = [
   'Отличные апартаменты!',
@@ -57,15 +60,13 @@ const createAdvert = function () {
   for (let j = 0; j < getRandomInt(0, PHOTOS.length - 1); j++) {
     photosValue.push(PHOTOS[j]);
   }
-  const getRandomArrayElement = function(elements) {
+  const getRandomArrayElement = function (elements) {
     return elements[getRandomInt(0, elements.length - 1)]
   };
 
   return {
     author: {
-
       avatar: 'img/avatars/user0' + x,
-master
     },
     offer: {
       title: getRandomArrayElement(TITLES) + '',
@@ -88,8 +89,17 @@ master
 };
 
 
-const similarAdverts = new Array(getRandomInt(1,10)).fill(null).map(() => createAdvert());
+const similarAdverts = new Array(getRandomInt(1, 10)).fill(null).map(() => createAdvert());
 
 
-export{similarAdverts};
-export{TITLES, TYPES, CHECKS, FEATURES, DESCRIPTIONS, PHOTOS};
+export {
+  similarAdverts
+};
+export {
+  TITLES,
+  TYPES,
+  CHECKS,
+  FEATURES,
+  DESCRIPTIONS,
+  PHOTOS
+};
