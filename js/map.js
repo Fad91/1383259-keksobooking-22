@@ -135,5 +135,5 @@ export {
   generateMarkers,
   onSuccess,
   onError,
-  mainMapMarker,
+  mainMapMarker
 };

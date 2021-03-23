@@ -1,4 +1,3 @@
-
 const getAdverts = function (onSuccess, onError) {
   fetch('https://22.javascript.pages.academy/keksobooking/data')
     .then(function (response) {
@@ -21,9 +20,9 @@ const postData = function (form) {
     credentials: 'same-origin',
     body: data,
   })
-  .then(function (response) {
-    return response.status;
-  })
+    .then(function (response) {
+      return response.status;
+    })
 }
 
 export {
