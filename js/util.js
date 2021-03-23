@@ -1,19 +1,29 @@
-const getRandomInt = function (min, max) {
-  if ((min >= 0) & (max >= 0)) {
-    let int = min + Math.random() * (max + 1 - min);
-    return Math.floor(int);
-  } else {
-    alert('Введите положительное число!');
-  }
-};
+const showAlert = function (message) {
+  const alertContainer = document.createElement('div');
+  alertContainer.style.zIndex = 300;
+  alertContainer.style.position = 'absolute';
+  alertContainer.style.left = 0;
+  alertContainer.style.top = '20px ';
+  alertContainer.style.right = 0;
+  alertContainer.style.padding = '10px 3px';
+  alertContainer.style.fontSize = '30px';
+  alertContainer.style.textAlign = 'center';
+  alertContainer.style.backgroundColor = 'red';
 
-const getAnotherInt = function (min, max, quanity) {
-  if ((min >= 0) & (max >= 0)) {
-    let num = min + Math.random() * (max - min);
-    return +num.toFixed(quanity);
-  } else {
-    alert('Введите положительное число!');
-  }
-};
+  alertContainer.textContent = message;
 
-export{getRandomInt, getAnotherInt};
+  document.body.append(alertContainer);
+
+  setTimeout(() => {
+    alertContainer.remove();
+  }, 5000);
+}
+
+const isEscEvent = function (evt) {
+  return evt.key === ('Escape' || 'Esc');
+}
+
+export {
+  showAlert,
+  isEscEvent
+};

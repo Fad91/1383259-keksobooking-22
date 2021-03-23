@@ -10,6 +10,9 @@ _`.editorconfig`, `.eslintrc`, `.gitattributes`, `.gitignore`, `package-lock.jso
 
 ---
 
+<!-- "browser-sync start --server \"build/\" --no-ui --files \"source/**/*.js\""
+"build": "webpack --mode production" -->
+
 ### Памятка
 
 #### 1. Зарегистрируйтесь на Гитхабе
