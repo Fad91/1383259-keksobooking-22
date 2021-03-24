@@ -68,7 +68,7 @@ const generateMarkers = function (adverts) {
     const icon = L.icon({
       iconSize: [52, 52],
       iconAnchor: [26, 52],
-      iconUrl: '../../../img/pin.svg',
+      iconUrl: '../../img/pin.svg',
     });
     const marker = L.marker({
       lat: advert.location.lat,
@@ -105,7 +105,7 @@ const onSuccess = function (adverts) {
 };
 
 const mainPinMarker = L.icon({
-  iconUrl: '../../../img/main-pin.svg',
+  iconUrl: '../../img/main-pin.svg',
   iconSize: [52, 52],
   iconAnchor: [26, 52],
 })
