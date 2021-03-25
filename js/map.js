@@ -99,6 +99,10 @@ const changeValue = function (adverts) {
   filterForm.addEventListener('change', _.debounce(rerenderMarkers, RERENDER_DELAY))
 }
 
+const resetMarkers = function() {
+  getAdverts(onSuccess)
+}
+
 const onSuccess = function (adverts) {
   generateMarkers(adverts);
   changeValue(adverts)
@@ -136,5 +140,6 @@ export {
   generateMarkers,
   onSuccess,
   onError,
-  mainMapMarker
+  mainMapMarker,
+  resetMarkers
 };

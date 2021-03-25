@@ -8,7 +8,8 @@ import {
   priceInput
 } from './form.js';
 import {
-  mainMapMarker
+  mainMapMarker,
+  resetMarkers
 } from './map.js';
 import {
   houseTypeFilter,
@@ -38,6 +39,7 @@ let resetValues = function () {
       checkbox.checked = false;
     }
   })
+  resetMarkers();
 };
 
 
