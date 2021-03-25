@@ -12,18 +12,21 @@ const getAdverts = function (onSuccess, onError) {
 }
 
 
-const postData = function (form) {
-  let data = new FormData(form);
+const postData = function (ifSuccess, ifError, body) {
   let url = 'https://22.javascript.pages.academy/keksobooking';
   fetch(url, {
-    method: 'post',
+    method: 'POST',
     credentials: 'same-origin',
-    body: data,
+    body,
   })
     .then(function (response) {
-      return response.status;
+      if (response.ok) {
+        ifSuccess();
+      } else {
+        ifError();
+      }
     })
-}
+};
 
 export {
   postData,

@@ -104,6 +104,11 @@ const onSuccess = function (adverts) {
   changeValue(adverts)
 };
 
+const onError = function () {
+  showAlert('Произошла ошибка загрузки, попробуйте еще раз');
+}
+
+
 const mainPinMarker = L.icon({
   iconUrl: 'img/main-pin.svg',
   iconSize: [52, 52],
@@ -124,10 +129,6 @@ mainMapMarker.on('moveend', function (evt) {
   const cords = evt.target.getLatLng();
   addressInput.value = cords.lat.toFixed(5) + ', ' + cords.lng.toFixed(5) + '';
 });
-
-const onError = function () {
-  showAlert('Произошла ошибка загрузки, попробуйте еще раз')
-}
 
 getAdverts(onSuccess, onError);
 

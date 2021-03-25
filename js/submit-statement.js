@@ -18,17 +18,6 @@ let errorMessage = errorTemplate.cloneNode(true);
 let errorButton = errorMessage.querySelector('.error__button');
 let pageMain = document.querySelector('main');
 
-
-form.addEventListener('submit', function (evt) {
-  evt.preventDefault();
-  postData(form);
-  if (postData) {
-    addSuccessMessage();
-  } else {
-    addErrorMessage();
-  }
-});
-
 const addSuccessMessage = function () {
   successMessage.style.zIndex = 100;
   pageMain.appendChild(successMessage);
@@ -46,14 +35,49 @@ const addErrorMessage = function () {
   }, 5000);
 }
 
+
+const setFormSubmit = function (ifSuccess, ifError) {
+  form.addEventListener('submit', function (evt) {
+    evt.preventDefault();
+    postData(
+      function() {
+        return ifSuccess()
+      },
+      function() {
+        return ifError()
+      },
+      new FormData(evt.target),
+    );
+  });
+}
+
+setFormSubmit(addSuccessMessage, addErrorMessage);
+
 const hideErrorMessage = function () {
   errorMessage.remove();
+
+  document.removeEventListener('click', hideErrorMessage);
 }
 
 const hideSuccessMessage = function () {
   successMessage.remove();
   resetValues();
+
+  document.removeEventListener('click', hideErrorMessage);
 }
+
+const onEscHideMessage = function () {
+  if (pageMain.contains(successMessage)) {
+    successMessage.remove();
+    resetValues();
+  }
+  if (pageMain.contains(errorMessage)) {
+    hideErrorMessage();
+  }
+
+  document.removeEventListener('keydown', onEscHideMessage)
+}
+
 
 successMessage.addEventListener('click', function () {
   hideSuccessMessage();
@@ -70,12 +94,6 @@ errorButton.addEventListener('click', function (evt) {
 
 document.addEventListener('keydown', function (evt) {
   if (isEscEvent(evt)) {
-    if (pageMain.contains(successMessage)) {
-      successMessage.remove();
-      resetValues();
-    }
-    if (pageMain.contains(errorMessage)) {
-      hideErrorMessage();
-    }
+    onEscHideMessage();
   }
 });
