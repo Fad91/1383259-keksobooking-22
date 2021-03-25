@@ -1,8 +1,3 @@
-// модуль фильтра
-// Найти селекторы фильтров
-// Повесить чендж
-// Вывести список обьяв (потом уже значении)
-// Начнем работу с массивом, сначала slice, потом filter по ченджу (или в функции отрисовки?)
 
 const filterForm = document.querySelector('.map__filters');
 const houseTypeFilter = filterForm.querySelector('#housing-type');
