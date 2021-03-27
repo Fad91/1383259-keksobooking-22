@@ -15,3 +15,4 @@ clientForms.forEach(function (clientForm) {
   clientForm.setAttribute('disabled', 'disabled');
 });
 
+export {form,clientForms,mapFilterForm,mapFilterSelectors};
