@@ -107,6 +107,7 @@ const makeTemplateElement = function (offer) {
   mapCanvas.appendChild(newElement);
 };
 
-// similarAdverts.forEach(function (offer) {
-makeTemplateElement(similarAdverts[0]);
-// });
+similarAdverts.forEach(function () {
+  makeTemplateElement(similarAdverts[0]);
+});
+
